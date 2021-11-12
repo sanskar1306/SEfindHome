@@ -40,12 +40,12 @@ const addNewUser = (req, res) => {
     } else if (err) {
       return res.status(500).json(err);
     }
-    // var profilePic = "";
-    // if (req.file !== undefined) {
-    //   profilePic = req.file.filename;
-    // } else {
-    //   profilePic = "";
-    // }
+    var profilePic = "";
+    if (req.file !== undefined) {
+      profilePic = req.file.filename;
+    } else {
+      profilePic = "";
+    }
     const newUser = new User({
       email: req.body.email,
       type: "owner",
