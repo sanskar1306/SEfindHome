@@ -116,7 +116,43 @@ const deleteUser = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+// Emailer
+const sendEmail = (req, res) => {
+  var transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "findhomeiiitm@gmail.com",
+      pass: `${mailpass}`,
+    },
+  });
 
+  let mailOptions;
+
+  if (req.params.c == 1) {
+    mailOptions = {
+      from: "findhomeiiitm@gmail.com",
+      to: req.params.email,
+      subject: "findHome.com",
+      text: "Greetings from findhome.com !!. We are glad to see you and will try to serve our great and best services to you. \n\nThanks and regards \nNaman Lakhwani ",
+    };
+  }
+
+  if (req.params.c == 2) {
+    mailOptions = {
+      from: "findhomeiiitm@gmail.com",
+      to: req.params.email,
+      subject: "findHome.com",
+      text: "It is very disheartening to see you leave. We hope that you liked our service and would come back again. \n\nThanks and regards \nNaman Lakhwani",
+    };
+  }
+
+  transporter.sendMail(mailOptions, function (error) {
+    if (error) {
+      res.status(400).json("Error: " + error);
+    } else {
+      res.json("Email sent!");
+    }
+  });
 };
 
 module.exports = {
