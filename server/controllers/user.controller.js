@@ -67,6 +67,7 @@ const addNewUser = (req, res) => {
         return res.status(400).json("Error: " + err);
       }
       console.log("user added");
+      return res.status(200).json("profile added");
     });
   });
 };
