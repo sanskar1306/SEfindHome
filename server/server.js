@@ -37,7 +37,7 @@ app.use(mongoSanitize());
 //data sanitization against xss
 app.use(xss());
 
-const url = `mongodb+srv://${username}:${myCluster}.mongodb.net/project?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${username}:${pass}${myCluster}.mongodb.net/project?retryWrites=true&w=majority`;
 
 
 
