@@ -61,11 +61,7 @@ const guestRouter = require("./routes/guest");
 //User Routes
 app.use("/users", usersRouter);
 
-//Admin Routes
-app.use("/admin", adminRouter);
 
-//Guest Routes
-app.use("/guest", guestRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
