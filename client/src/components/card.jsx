@@ -6,6 +6,13 @@ import img_src from './im'
 
 class card extends Component {
     render() {
+        var imageUrl = '';
+
+        if (this.props.user.profilePic === '') {
+            imageUrl = img_src;
+        } else {
+            imageUrl = `./uploads/${this.props.user.profilePic}`;
+        }
         return (
             <div className='box-container'>
                 <div className='box-item'>
