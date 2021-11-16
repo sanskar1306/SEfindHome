@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './style.css';
+import axios from 'axios';
 import { Card, Button } from 'bootstrap-4-react';
-
+import img_src from './im'
 
 class card extends Component {
     render() {
