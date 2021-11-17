@@ -1,10 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
 import { getInitalData } from '../Redux/reducers/users';
+import { connect } from 'react-redux';
+import Card from './card';
+import './style.css'
+import { Container, Row } from 'bootstrap-4-react';
 import { Progress } from 'bootstrap-4-react';
 
-class explore extends Component {
 
+
+class explore extends Component {
     componentDidMount() {
         this.props.getInitalData();
     }
@@ -38,27 +42,49 @@ class explore extends Component {
             );
         }
     }
+
     render() {
         return (
-
             <>
-            <div>
+                <div>
 
-                <br />
-                <br />
-            </div>
+                    <br />
+                    <br />
+                </div>
 
-            {!this.props.isDataInitialized && (
-                <Progress mb='4' w='25%'>
-                    <Progress.Bar striped animated min='0' max='100' mx='auto' now='50'>
-                        Initializing data
-                    </Progress.Bar>
-                </Progress>
-            )}
+                {!this.props.isDataInitialized && (
+                    <Progress mb='4' w='25%'>
+                        <Progress.Bar striped animated min='0' max='100' mx='auto' now='50'>
+                            Initializing data
+                        </Progress.Bar>
+                    </Progress>
+                )}
+                {this.props.isDataInitialized && (
+                    <div>
+                        <div className='text-center'>
+                            <br />
+                            <h1>Explore all house hosted with us</h1>
+                            <hr className='w-25 mx-auto pt-5' />
+                        </div>
 
+                        <Container
+                            style={{
+                                marginTop: '5em',
+                                textAlign: 'center',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <Row className="list_row">{this.List()}</Row>
+                        </Container>
+
+                        <br />
+                    </div>
+                )}
             </>
-        )
+        );
     }
 }
 
-export default connect(state => state, { getInitalData })(Explore);
+export default connect(state => state, { getInitalData })(explore);
