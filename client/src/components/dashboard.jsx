@@ -18,6 +18,17 @@ class dashboard extends Component {
             
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.bookings !== prevProps.bookings)
+        if (!this.props.isLoading) {
+            console.log(this.props.users)
+
+            this.setState({
+                guests: this.props.bookings
+            });
+        }
+    }
+
     List() {
        
         let bookedByUser = this.state.guests.filter(guest => guest.email === this.props.email)
