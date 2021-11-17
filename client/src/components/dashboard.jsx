@@ -110,6 +110,8 @@ class dashboard extends Component {
                                 justifyContent: 'center',
                             }}
                         >
+
+                            <Row className="list_row">{this.List()}</Row>
                         </Container>
                     </>
 
