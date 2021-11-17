@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { getInitalData } from '../Redux/reducers/users';
 import { Progress } from 'bootstrap-4-react';
 
@@ -60,4 +61,4 @@ class explore extends Component {
     }
 }
 
-export default explore
+export default connect(state => state, { getInitalData })(Explore);
