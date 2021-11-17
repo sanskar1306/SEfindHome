@@ -26,6 +26,16 @@ class dashboard extends Component {
                     </Progress>
                 )}
 
+                {this.props.isDataInitialized && (
+
+                    <div className='text-center'>
+                        <br />
+                        <h1>Your Bookings</h1>
+                        <hr className='w-25 mx-auto pt-5' />
+                    </div>
+
+                )}
+
             </>
         )
     }
