@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import { getInitalData } from '../Redux/reducers/users';
 
 class explore extends Component {
+
+    componentDidMount() {
+        this.props.getInitalData();
+    }
 
     List() {
         if (this.props.users.length) {
@@ -34,7 +39,7 @@ class explore extends Component {
     render() {
         return (
             <div>
-                
+
             </div>
         )
     }
