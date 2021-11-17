@@ -253,4 +253,18 @@ class form extends Component {
         )
     }
 }
-export default form;
+const mapStatetoProps = (state) => {
+    return {
+        emailid: state.email,
+        logged: state.loggedin,
+        currentUser: state.currentUser,
+    };
+};
+
+const mapDispatchtoProps = (dispatch) => {
+    return {
+        email: (email) => dispatch({ type: "Email", email: email }),
+    };
+};
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(form);
