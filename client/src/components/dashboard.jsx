@@ -9,6 +9,15 @@ class dashboard extends Component {
 
     }
 
+    componentDidMount() {
+        this.props.getInitalData()
+       
+            this.setState({
+                guests: this.props.bookings
+            });
+            
+    }
+
     List() {
        
         let bookedByUser = this.state.guests.filter(guest => guest.email === this.props.email)
