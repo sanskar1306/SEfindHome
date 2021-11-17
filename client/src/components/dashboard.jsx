@@ -1,4 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {getInitalData } from '../Redux/reducers/users';
+import { connect } from 'react-redux';
+import Card from './card';
+import './style.css'
+import NoData from '../assets/images/No_data.gif';
+import { Container, Row } from 'bootstrap-4-react';
 import { Progress } from 'bootstrap-4-react';
 
 class dashboard extends Component {
