@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getInitalData } from '../Redux/reducers/users';
+import { Progress } from 'bootstrap-4-react';
 
 class explore extends Component {
 
@@ -38,9 +39,23 @@ class explore extends Component {
     }
     render() {
         return (
+
+            <>
             <div>
 
+                <br />
+                <br />
             </div>
+
+            {!this.props.isDataInitialized && (
+                <Progress mb='4' w='25%'>
+                    <Progress.Bar striped animated min='0' max='100' mx='auto' now='50'>
+                        Initializing data
+                    </Progress.Bar>
+                </Progress>
+            )}
+
+            </>
         )
     }
 }
