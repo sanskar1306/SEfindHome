@@ -37,7 +37,14 @@ describe('User routes', () => {
     await User.deleteMany({});
   });
 
-  
+  it('should add a user', async () => {
+    const response = await request(app)
+      .post('/users/add')
+      .set('content-type', 'application/json')
+      .send(JSON.stringify(data));
+    expect(response.status).to.equal(200);
+    expect(response.body).to.equal('profile added');
+  });
 
   
 
