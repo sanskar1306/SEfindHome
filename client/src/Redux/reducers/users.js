@@ -1,16 +1,20 @@
+import axios from "axios";
+
 const defaultState = {
-    all: {},
-    users: {},
-    currentUser: "",
-    email: "",
-    isDataInitialized: false,
-    bookings: [],
-    isLoading: false,
-    loggedin: false,
-    registeredUser: false,
-    registeredUserData: {},
+  all: {},
+  users: {},
+  currentUser: "",
+  email: "",
+  priceData: {},
+  isDataInitialized: false,
+  bookings: [],
+  isLoading: false,
+  loggedin: false,
+  registeredUser: false,
+  registeredUserData: {},
+  pindata: {},
 };
-  
+
 export default function rootReducer(state = defaultState, action) {
   switch (action.type) {
     case "DATA_INITIALIZED":
@@ -19,9 +23,7 @@ export default function rootReducer(state = defaultState, action) {
         all: action.all.data,
         users: action.all.data,
         pindata: action.all.data,
-        namedata: action.all.data,
-        subjdata: action.all.data,
-        tutdata: action.all.data,
+
         isDataInitialized: true,
       };
 
@@ -57,6 +59,23 @@ export default function rootReducer(state = defaultState, action) {
         loggedin: false,
         email: "",
         currentUser: "",
+      };
+    case "PIN":
+      const newArray0 = state.all.filter(
+        (user) => user.pin.toString() === action.pin
+      );
+      return {
+        ...state,
+        pindata: newArray0,
+        users: newArray0,
+      };
+   
+    case "CLR":
+      return {
+        ...state,
+        users: state.all,
+        priceData: state.all,
+        pindata: state.all,
       };
 
     default:
