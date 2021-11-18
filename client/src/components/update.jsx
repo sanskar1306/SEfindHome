@@ -317,7 +317,13 @@ class update extends Component {
     }
 }
 
-
+const mapStatetoProps = (state) => {
+    return {
+        emailid: state.email,
+        logged: state.loggedin,
+        data: state.registeredUserData,
+    };
+};
 
 
 
