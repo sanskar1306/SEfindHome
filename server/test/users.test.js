@@ -52,7 +52,11 @@ describe('User routes', () => {
     expect(response.body).to.be.an('object');
   });
 
-  
+  it('should return all users', async () => {
+    const response = await request(app).get('/users');
+    expect(response.body).to.be.an('array');
+    expect(response.status).to.equal(200);
+  });
 
   
   
