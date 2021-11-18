@@ -58,7 +58,15 @@ describe('User routes', () => {
     expect(response.status).to.equal(200);
   });
 
-  
+  it('should update user by id', async () => {
+    const response = await await request(app)
+      .post(`/users/update/${id}`)
+      .set('content-type', 'application/json')
+      .send({ ...data, username: 'test2' });
+    expect(response.status).to.equal(200);
+    expect(response.body).to.equal('Exercise updated!');
+  });
+
   
 
   
