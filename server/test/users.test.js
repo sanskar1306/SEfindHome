@@ -67,7 +67,9 @@ describe('User routes', () => {
     expect(response.body).to.equal('Exercise updated!');
   });
 
-  
-
-  
+  it('should delete user by id', async () => {
+    const response = await await request(app).delete(`/users/delete/${id}`);
+    expect(response.status).to.equal(200);
+    expect(response.body).to.equal('Profile deleted.');
+  });
 });
