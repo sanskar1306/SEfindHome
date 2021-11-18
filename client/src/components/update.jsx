@@ -325,6 +325,10 @@ const mapStatetoProps = (state) => {
     };
 };
 
-
+const mapDispatchtoProps = (dispatch) => {
+    return {
+        email: (email) => dispatch({ type: "Email", email: email }),
+    };
+};
 
 export default connect(mapStatetoProps, mapDispatchtoProps)(update);
