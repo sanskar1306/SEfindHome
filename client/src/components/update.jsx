@@ -14,7 +14,133 @@ const validateForm = (errors) => {
 };
 
 class update extends Component {
-   
+    state = {
+        email: this.props.data.email,
+        title: this.props.data.title,
+        userName: this.props.data.username,
+
+        rent: this.props.data.rent,
+        about: this.props.data.about,
+
+        address: this.props.data.address,
+        city: this.props.data.city,
+        pin: this.props.data.pin,
+        phone: this.props.data.phone,
+        errormessage1: "",
+        errormessage2: "",
+        errors: {
+            title: "",
+            userName: "",
+
+            rent: "",
+            about: "",
+            c1: "",
+            address: "",
+            city: "",
+            pin: "",
+            phone: "",
+        },
+    };
+
+    handleChange = (e) => {
+        let nam = e.target.id;
+        let val = e.target.value;
+        let errors = this.state.errors;
+        const pinRegex = RegExp(/[1-9][0-9]{5}/);
+        const phoneRegex = RegExp(/^[0-9\b]+$/);
+        let err = "";
+        if (nam === "pin") {
+            if (!pinRegex.test(val) || (val.length !== 6 && val !== "")) {
+                err = <span style={{ color: "red" }}>Please enter valid pincode!</span>;
+                document.getElementById("pin").style.border = "1px solid red";
+            } else {
+                document.getElementById("pin").style.borderColor = "";
+            }
+            this.setState({ errormessage1: err });
+        }
+
+        if (nam === "phone") {
+            if (!phoneRegex.test(val) || (val.length !== 10 && val !== "")) {
+                err = (
+                    <span style={{ color: "red" }}>
+                        Please enter valid mobile number!
+                    </span>
+                );
+                document.getElementById("phone").style.border = "1px solid red";
+            } else {
+                document.getElementById("phone").style.borderColor = "";
+            }
+            this.setState({ errormessage2: err });
+        }
+        switch (nam) {
+            case "title":
+                errors.title = val === "" ? "*" : "";
+                break;
+            case "userName":
+                errors.userName = val.length < 1 ? "*" : "";
+                break;
+
+            case "rent":
+                errors.rent = val === "" ? "*" : "";
+                break;
+
+            case "about":
+                errors.about = val.length < 1 ? "*" : "";
+                break;
+
+            case "address":
+                errors.address = val.length < 1 ? "*" : "";
+                break;
+            case "city":
+                errors.city = val.length < 1 ? "*" : "";
+                break;
+            case "pin":
+                errors.pin = val.length < 1 ? "*" : "";
+                break;
+            case "phone":
+                errors.phone = val.length < 1 ? "*" : "";
+                break;
+            default:
+                break;
+        }
+
+        this.setState({ errors, [e.target.id]: e.target.value });
+    };
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        if (validateForm(this.state.errors)) {
+            axios
+                .post(`https://find-home2021.herokuapp.com/users/update/${this.props.data._id}`, {
+                    title: this.state.title,
+                    userName: this.state.userName,
+
+                    rent: this.state.rent,
+                    about: this.state.about,
+                    address: this.state.address,
+                    city: this.state.city,
+                    pin: this.state.pin,
+                    phone: this.state.phone,
+                })
+                .then((response) => {
+                    if (response.status === 200) {
+                        if (
+                            !alert(
+                                `Congratulations!! ${this.state.userName.toUpperCase()} Your profile Updated Successfully `
+                            )
+                        ) {
+                            window.location.reload();
+                        }
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        } else {
+            toast.error("Please fill out all the required fields to proceed.");
+        }
+    };
+
     render() {
         return (
             <div>
