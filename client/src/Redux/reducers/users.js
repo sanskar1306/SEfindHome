@@ -69,7 +69,17 @@ export default function rootReducer(state = defaultState, action) {
         pindata: newArray0,
         users: newArray0,
       };
-   
+    case "PRICE":
+      const newArray2 = state.all.filter(
+        (user) =>
+          user.rent.toString() >= action.price[0] &&
+          user.rent.toString() <= action.price[1]
+      );
+      return {
+        ...state,
+        priceData: newArray2,
+        users: newArray2,
+      };
     case "CLR":
       return {
         ...state,
