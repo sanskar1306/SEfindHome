@@ -46,7 +46,11 @@ describe('User routes', () => {
     expect(response.body).to.equal('profile added');
   });
 
-  
+  it('should fetch user by email', async () => {
+    const response = await request(app).get('/users/test@gmail.com');
+    expect(response.status).to.equal(200);
+    expect(response.body).to.be.an('object');
+  });
 
   
 
