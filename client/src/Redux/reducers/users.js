@@ -13,6 +13,7 @@ const defaultState = {
   registeredUser: false,
   registeredUserData: {},
   pindata: {},
+  citydata: {},
 };
 
 export default function rootReducer(state = defaultState, action) {
@@ -61,7 +62,7 @@ export default function rootReducer(state = defaultState, action) {
         currentUser: "",
       };
     case "PIN":
-      const newArray0 = state.all.filter(
+      const newArray0 = state.users.filter(
         (user) => user.pin.toString() === action.pin
       );
       return {
@@ -69,8 +70,20 @@ export default function rootReducer(state = defaultState, action) {
         pindata: newArray0,
         users: newArray0,
       };
+
+    case "CITY":
+      const newArray = state.all.filter(
+        (user) =>
+          user.city.toString().toLowerCase() === action.city.toLowerCase()
+      );
+      return {
+        ...state,
+        citydata: newArray,
+
+        users: newArray,
+      };
     case "PRICE":
-      const newArray2 = state.all.filter(
+      const newArray2 = state.users.filter(
         (user) =>
           user.rent.toString() >= action.price[0] &&
           user.rent.toString() <= action.price[1]
