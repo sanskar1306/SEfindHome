@@ -3,15 +3,15 @@ import './style.css';
 import axios from 'axios';
 import { Card, Button } from 'bootstrap-4-react';
 import img_src from './im'
-class card extends Component {
-     
+class cards extends Component {
+
     handleClick = () => {
         // console.log(this.props.user._id.toString());
         axios
             .post(`https://find-home2021.herokuapp.com/users/book/${this.props.user._id}/${1}`)
             .then(
                 res => {
-                     console.log(res)
+                    console.log(res)
                     axios
                         .post(`https://find-home2021.herokuapp.com/guest/add/${this.props.user._id}/`, {
                             email: this.props.email
@@ -30,9 +30,9 @@ class card extends Component {
 
                     console.log(`Error: ${error}`);
                 },
-                
+
             );
-        
+
     };
 
     handleClick1 = () => {
@@ -58,14 +58,14 @@ class card extends Component {
                     console.log(`Error: ${error}`);
                 }
             );
-        
+
     };
 
     render() {
         var imageUrl = '';
 
         if (this.props.user.profilePic === '') {
-            imageUrl = img_src;
+            imageUrl = img_src[Math.floor((Math.random() * 5) + 1)];
         } else {
             imageUrl = `./uploads/${this.props.user.profilePic}`;
         }
@@ -74,11 +74,13 @@ class card extends Component {
             <div className='box-container'>
                 <div className='box-item'>
                     <Card style={{ width: '18rem', height: "30rem" }} className='flip-box'>
-                        <Card.Header>{this.props.user.name}</Card.Header>
-                        <Card.Image src={imageUrl} />
+                        {/* <Card.Header>{this.props.user.name}</Card.Header> */}
+                        <Card.Image src={imageUrl} style={{ width: '18rem', height: "12rem" }} />
                         <Card.Body>
                             <Card.Title>Rs {this.props.user.rent}</Card.Title>
+
                             <Card.Subtitle mb="2" text="muted">{this.props.user.about}</Card.Subtitle>
+                            <Card.Text>{this.props.user.phone} </Card.Text>
                             <Card.Text>{this.props.user.address} {this.props.user.city} , <span style={{ fontWeight: "bold" }}> {this.props.user.pin}</span></Card.Text>
                         </Card.Body>
                         <Card.Footer>
@@ -106,4 +108,4 @@ class card extends Component {
     }
 }
 
-export default card;
+export default cards;
