@@ -40,7 +40,7 @@ class form extends Component {
     };
     render() {
         return (
-            <div>
+            <div data-testid="form">
                 <Modal.Body>
                     <Form>
                         <div className="formRoot">

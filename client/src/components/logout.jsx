@@ -13,7 +13,7 @@ class Logout extends Component {
     };
     render() {
         return (
-            <div>
+            <div data-testid="logout">
                 <GoogleLogout
                     clientId="637286602051-he39r2u56o4ks6a9g0e38mtu6rro8hlr.apps.googleusercontent.com"
                     buttonText="Signout"

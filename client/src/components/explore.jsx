@@ -46,6 +46,7 @@ class explore extends Component {
     render() {
         return (
             <>
+                <div data-testid="explore">
                 <div>
 
                     <br />
@@ -81,7 +82,8 @@ class explore extends Component {
 
                         <br />
                     </div>
-                )}
+                    )}
+                    </div>
             </>
         );
     }

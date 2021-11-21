@@ -26,7 +26,7 @@ function Login() {
     };
 
     return (
-        <div>
+        <div data-testid="login">
             <GoogleLogin
                 clientId={clientId}
                 buttonText="Signin with Google"

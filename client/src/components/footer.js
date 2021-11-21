@@ -3,7 +3,7 @@ import "./style.css";
 
 function Footer() {
   return (
-    <footer className="footer-section">
+    <footer className="footer-section" data-testid="footer">
       <div className="container">
         <div className="footer-cta pt-5 pb-5">
           <div className="row">

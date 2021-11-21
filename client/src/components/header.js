@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "./style.css";
 import { Navbar, Nav, Button, Collapse, Modal } from "bootstrap-4-react";
 
@@ -23,12 +22,12 @@ class Header extends Component {
 
     axios
       .delete(
-        `https://find-home2021.herokuapp.com/users/delete/${this.props.id}`
+        `https://find-home2021.herokuapp.com/users/delete/${this.props?.id}`
       )
       .then((response) => {
         if (response.status === 200) {
           axios.get(
-            `https://find-home2021.herokuapp.com/users/sendMail/${this.props.emailid}/2`
+            `https://find-home2021.herokuapp.com/users/sendMail/${this.props?.emailid}/2`
           );
           if (!alert(`Your profile deleted successfully.....!! `)) {
             window.location.reload();
@@ -46,14 +45,14 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.logged && !this.props.registeredUser && (
+      <div data-testid="header">
+        {this.props?.logged && !this.props?.registeredUser && (
           <div>
             <Navbar expand="lg" dark bg="dark" fixed="top" className="navbar">
               <Navbar.Brand href="#">
                 {" "}
                 <div className="navbar-logo">
-                  {/* <img className="logo-image" src={im} /> */}
+           
                   <h3 className="logo-image" style={{ color: "white" }}>
                     {" "}
                     <span style={{ color: "#0059ff" }}>Find</span>Home{" "}
@@ -104,13 +103,13 @@ class Header extends Component {
             </Modal>
           </div>
         )}
-        {this.props.logged && this.props.registeredUser && (
+        {this.props?.logged && this.props?.registeredUser && (
           <div>
             <Navbar expand="lg" dark bg="dark" fixed="top" className="navbar">
               <Navbar.Brand href="#">
                 {" "}
                 <div className="navbar-logo">
-                  {/* <img className="logo-image" src={im} /> */}
+              
                   <h3 className="logo-image" style={{ color: "white" }}>
                     {" "}
                     <span style={{ color: "#0059ff" }}>Find</span>Home{" "}
@@ -166,7 +165,7 @@ class Header extends Component {
                       <i className="fa fa-exclamation-triangle"></i>
                     </div>
                     <h4 className="modal-title w-100">Are you sure?</h4>
-                    {/* <Modal.Title className="modal-heading"></Modal.Title> */}
+                   
                     <Modal.Close>
                       <span aria-hidden="true">&times;</span>
                     </Modal.Close>
@@ -194,13 +193,13 @@ class Header extends Component {
             </Modal>
           </div>
         )}
-        {!this.props.logged && (
+        {!this.props?.logged && (
           <div>
             <Navbar expand="lg" dark bg="dark" fixed="top" className="navbar">
               <Navbar.Brand href="#">
                 {" "}
                 <div className="navbar-logo">
-                  {/* <img className="logo-image" src={im} /> */}
+                 
                   <h3 className="logo-image" style={{ color: "white" }}>
                     {" "}
                     <span style={{ color: "#0059ff" }}>Find</span>Home{" "}
