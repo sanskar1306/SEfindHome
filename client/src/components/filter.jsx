@@ -86,7 +86,7 @@ class filter extends Component {
 
     render() {
         return (
-            <div>
+            <div data-testid="filter">
                 <Grid container spacing={3} className="grid-box">
                     <Grid item sm={12} md={4}>
                         <form onSubmit={this.handleSubmitPIN} className='form1'>

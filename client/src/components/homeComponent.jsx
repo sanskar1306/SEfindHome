@@ -46,6 +46,7 @@ class Home extends Component {
     render() {
         return (
             <>
+                <div data-testid="home">
                 <div>
 
                     <br />
@@ -81,7 +82,8 @@ class Home extends Component {
 
                         <br />
                     </div>
-                )}
+                    )}
+                    </div>
             </>
         );
     }

@@ -143,7 +143,7 @@ class update extends Component {
 
     render() {
         return (
-            <div>
+            <div data-testid="update">
                 <Modal.Body>
                     <Form>
                         <div className="formRoot">

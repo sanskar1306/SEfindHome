@@ -79,6 +79,7 @@ class dashboard extends Component {
     render() {
         return (
             <>
+                <div data-testid="dash">
                 <div>
 
                     <br />
@@ -93,7 +94,7 @@ class dashboard extends Component {
                     </Progress>
                 )}
                 {this.props.isDataInitialized && (
-                    <div>
+                    <div >
                         <div className='text-center'>
                             <br />
                             <h1>Your Bookings</h1>
@@ -113,8 +114,10 @@ class dashboard extends Component {
                         </Container>
 
                         <br />
-                    </div>
-                )}
+                        </div>
+                        
+                    )}
+                </div>
             </>
         );
     }
