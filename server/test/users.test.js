@@ -7,7 +7,7 @@ describe('User routes', () => {
   var id = '';
   const data = {
     email: 'test@gmail.com',
-    title: 'tutor',
+    title: 'Mr.',
     userName: 'test',
     about: 'about',
     address: 'address',
@@ -21,9 +21,7 @@ describe('User routes', () => {
   before(async () => {
     const user = await User.create({
       ...data,
-      class1: 9,
-      coaching: 'coaching',
-      username: 'test',
+      type: 'guest',
     });
     id = user._id;
   });
